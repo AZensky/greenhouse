@@ -6,7 +6,8 @@
   left: 20px;
 }
 
-.light-switch .on, .light-switch .off {
+.light-switch .on,
+.light-switch .off {
   width: 100%;
   height: 60px;
   border: 1px solid black;
@@ -15,11 +16,13 @@
   align-items: center;
 }
 
-.light-switch.day .on, .light-switch.night .off {
+.light-switch.day .on,
+.light-switch.night .off {
   background-color: white;
 }
 
-.light-switch.night .on, .light-switch.day .off {
+.light-switch.night .on,
+.light-switch.day .off {
   background-color: gray;
   cursor: pointer;
 }
