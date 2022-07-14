@@ -2,14 +2,31 @@ import ReactSlider from "react-slider";
 import "./Hygrometer.css";
 
 import { useClimate } from "../../context/ClimateContext";
+import { useEffect, useState } from "react";
 
 function Hygrometer() {
   const { humidity, setHumidity } = useClimate();
+  const [desiredHumidity, setDesiredHumidity] = useState(humidity);
+
+  useEffect(() => {
+    let incrementHumidity;
+    if (desiredHumidity < humidity) {
+      incrementHumidity = setTimeout(() => {
+        setDesiredHumidity(desiredHumidity + 2)
+      }, 200)
+    }
+    if (desiredHumidity > humidity) {
+      incrementHumidity = setTimeout(() => {
+        setDesiredHumidity(desiredHumidity - 2)
+      }, 200)
+    }
+    return () => clearTimeout(incrementHumidity)
+  }, [desiredHumidity, humidity])
 
   return (
     <section>
       <h2>Hygrometer</h2>
-      <div className="actual-humid">Actual Humidity: {"y"}%</div>
+      <div className="actual-humid">Actual Humidity: {desiredHumidity}%</div>
       <ReactSlider
         value={humidity}
         onAfterChange={(val) => setHumidity(val)}
