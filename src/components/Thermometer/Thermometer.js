@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import ReactSlider from "react-slider";
-import './Thermometer.css';
-import { useTemperature } from '../../context/ClimateContext'
+import "./Thermometer.css";
+import { useClimate } from "../../context/ClimateContext";
 
 function Thermometer() {
-  const { temperature, setTemperature } = useTemperature();
+  const { temperature, setTemperature } = useClimate();
 
   return (
     <section>
